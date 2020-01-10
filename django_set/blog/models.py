@@ -1,9 +1,10 @@
+from froala_editor.fields import FroalaField
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from tinymce.models import HTMLField
-# from PIL import image
-# Create your models here.
+
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -11,23 +12,26 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} profile'
-    # def save(self):
-    #     super().save()
-    #     img = image.open(self.image.path)
-    #     if img.height > 300 or img.width > 300:
-    #         output_size = (300,300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.image.path)
 
 
 
 class Post(models.Model):
     title = models.CharField(max_length=70)
-    content_overview = models.CharField(max_length=50)
-    content = models.TextField()
+    tag = models.CharField(max_length=30, default='Programming')
+    content_overview = models.CharField(max_length=200)
+    content = FroalaField(theme='dark')
     date_post = models.DateField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = HTMLField()
+    thumbnail = models.ImageField(default=True)
+    featured = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
+
+
+class NewsLetter(models.Model):
+    email = models.EmailField()
+    singnup_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.email
+

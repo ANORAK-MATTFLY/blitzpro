@@ -1,0 +1,6 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="media-body">
+    <p class="article-content">{{ post.content | safe }}</p>
+</div>
+{% endblock content %}
