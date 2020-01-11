@@ -1,2 +1,2 @@
 
-web: gunicorn djangoCop.wsgi
+web: gunicorn django_set.wsgi
