@@ -9,7 +9,7 @@ click==6.7
 colorama==0.3.7
 configobj==5.0.6
 constantly==15.1.0
-cryptography==2.1.4
+cryptography==42.0.4
 Django==3.0.1
 django-froala-editor==3.0.6
 django-js-asset==1.2.2
